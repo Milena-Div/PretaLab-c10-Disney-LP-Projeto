@@ -16,10 +16,13 @@ function atualizarFeedback(msg) {
 }
 
 function pegarPalpitesFalhos() {
+  return document.getElementById("palpitesFalhos").textContent;
   // to-do
 }
 
 function atualizarPalpitesFalhos(novoValor) {
+  const campo = document. getElementById("palpitesFalhos");
+  campo.textContent = novoValor;
   // to-do
 }
 
