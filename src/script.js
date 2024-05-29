@@ -3,47 +3,43 @@ let tentativas = 0;
 
 function jogoDeAdivinhacao() {
     const palpiteDigitado = pegarPalpiteDigitado ();
+    const palpitesFalhos = pegarPalpitesFalhos();
 
-if (palpiteDigitado >100) {
-    alert("Digite um valor entre 1 e 100");
-    return;
-   } else if (palpiteDigitado <=0) {
-    alert("Digite um valor entre 1 e 100");
-    return;
-      } else {
+    if (palpiteDigitado >100) {
+        alert("Digite um valor entre 1 e 100");
+        return;
+    } else if (palpiteDigitado <=0) {
+        alert("Digite um valor entre 1 e 100");
+        return;
+    } else {
         console.log(palpiteDigitado)
-      }   
+    } 
 
-      //
-
-      if (!palpiteDigitado) {
+    if (!palpiteDigitado) {
         alert("Digite um valor válido!");
         return;
-    }
+    }    
 
-    console.log(palpiteDigitado);
-//
-    
-//
+    if (palpitesFalhos.includes(palpiteDigitado)) {
+        alert("Palpite repetido. Tente outro número");
+        return;
+    }
 
     if (palpiteDigitado === numeroAleatorio) {
         alert("Parabéns, você adivinhou!")
         reiniciarJogo();
         return;
-
     } else if (palpiteDigitado > numeroAleatorio) {
         tentativas++;
-    atualizarFeedback ("O número é muito alto. Tente novamente.");
-
+        atualizarFeedback ("O número é muito alto. Tente novamente.");
     } else if (palpiteDigitado < numeroAleatorio) {
         tentativas++;
         atualizarFeedback ("O número é muito baixo. Tente novamente.");
-    } 
+    }
 
     const novaPontuacao = 100 - (tentativas*10);
     atualizarPontuacao(novaPontuacao);
 
-    const palpitesFalhos = pegarPalpitesFalhos();
     const novosPalpitesFalhos = palpitesFalhos + " " + palpiteDigitado;
     atualizarPalpitesFalhos(novosPalpitesFalhos);
 
@@ -52,10 +48,8 @@ if (palpiteDigitado >100) {
     if (pontuacaoAtual === "Você tem 0 pontos") {
         alert ("Game over!");
         reiniciarJogo();
-
     }
  }
-
 
     /*
     Guiado
@@ -92,4 +86,5 @@ function reiniciarJogo() {
         //atualizarFeedback("");
         //limparPalpiteDigitado ();
 
-    }}
+    }
+}
