@@ -15,9 +15,15 @@ function atualizarFeedback(msg) {
   mensagemElement.textContent = msg;
 }
 
+let palpitesFalhos = [];
+
 function pegarPalpitesFalhos() {
+    return palpitesFalhos;
+}
+
+  function pegarPalpitesFalhos() {
   return document.getElementById("palpitesFalhos").textContent;
-  // to-do
+
 }
 
 function atualizarPalpitesFalhos(novoValor) {
